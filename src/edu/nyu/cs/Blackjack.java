@@ -21,23 +21,54 @@ public class Blackjack {
     return card;
   }
 
-  public static boolean hit_stand(){
+  public static boolean hit(){
     Scanner scnr = new Scanner(System.in);
     String choice = scnr.nextLine();
     System.out.println("Would you like to hit or stand? ");
+
+
+    String hit = "hit";
+    
+    if (choice.equals(hit)){
+      return true;
+    }
+    else {
+      return false;
+    }
+
     
   }
   public static void main(String[] args) throws Exception {
 
     // complete this function according to the instructions
 
-    // random class
-
+    // random class    
 
 
     System.out.println("Welcome to Blackjack!");
     int player_card1 = generate_card();
     int player_card2 = generate_card();
+    int player_total = player_card1 + player_card2;
+    boolean bust = false;
+
+    System.out.println("Your cards are: " + player_card1 + "and " + player_card2);
+
+      
+      while (bust == false){
+        
+        if (hit()){
+          int new_card = generate_card();
+          player_total += new_card;
+        }
+        else{
+          break;
+        }
+        if (player_total > 21){
+          bust = true;
+        }
+      }
+
+    
     
 
 
